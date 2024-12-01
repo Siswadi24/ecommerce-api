@@ -16,6 +16,10 @@
 
     -   [Get Profile]
     -   [Update Profile]
+
+    -   [Migration & Model Slider]
+    -   [Seeder Slider]
+    -   [API Slider]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
