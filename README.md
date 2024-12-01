@@ -8,6 +8,11 @@
     -   [Finish OTP](#finish-otp)
     -   [Resend OTP](#resend-otp)
     -   [Login](#login)
+
+    -   [Request Reset Password + Send OTP]
+    -   [Request OTP]
+    -   [Check OTP]
+    -   [Reset Password]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
