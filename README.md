@@ -20,6 +20,10 @@
     -   [Migration & Model Slider]
     -   [Seeder Slider]
     -   [API Slider]
+
+    -   [Migration & Model Category]
+    -   [Seeder Category]
+    -   [API Category]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
