@@ -13,6 +13,9 @@
     -   [Request OTP]
     -   [Check OTP]
     -   [Reset Password]
+
+    -   [Get Profile]
+    -   [Update Profile]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
