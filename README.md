@@ -24,6 +24,15 @@
     -   [Migration & Model Category]
     -   [Seeder Category]
     -   [API Category]
+
+    -   [Migration and Model Province, City, Address]
+    -   [Import Database Dump for Provinces, Cities]
+    -   [API CRUD Address]
+    -   [API Set Address Utama]
+
+    -   [Create Kredensial google]
+    -   [Create Config Google]
+    -   [Create API]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 

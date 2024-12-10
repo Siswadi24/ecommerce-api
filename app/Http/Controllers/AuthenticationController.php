@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\ResponseFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +9,56 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthenticationController extends Controller
 {
+    public function authGoogle()
+    {
+        $validator = \validator(request()->all(), [
+            'token' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return ResponseFormatter::error(400, $validator->errors());
+        }
+
+        $client = new \Google_Client(['client_id' => config('services.google.Client_id')]);
+        $payload = $client->verifyIdToken(request()->token);
+        if ($payload) {
+            $userid = $payload['sub'];
+            $email = $payload['email'];
+            $name = $payload['name'];
+
+            $user = \App\Models\User::where('social_media_provider', 'google')->where('social_media_id', $userid)->first();
+            if (!is_null($user)) {
+                $token = $user->createToken(config('app.name'))->plainTextToken;
+                return ResponseFormatter::success([
+                    'token' => $token,
+                ]);
+            }
+
+            $user = \App\Models\User::where('email', $email)->first();
+            if (!is_null($user)) {
+                $user->update([
+                    'social_media_provider' => 'google',
+                    'social_media_id' => $userid,
+                ]);
+            } else {
+                $user = \App\Models\User::create([
+                    'name' => $name,
+                    'email' => $email,
+                    'social_media_provider' => 'google',
+                    'social_media_id' => $userid,
+                ]);
+            }
+            $token = $user->createToken(config('app.name'))->plainTextToken;
+            return ResponseFormatter::success([
+                'token' => $token,
+            ]);
+
+        } else {
+            return ResponseFormatter::error(400, null, [
+                'Invalid token!',
+            ]);
+        }
+    }
     public function register()
     {
         $validator = \validator(request()->all(), [
