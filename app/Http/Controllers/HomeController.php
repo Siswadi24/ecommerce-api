@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function getProduct()
     {
-        $product = \App\Models\Product\Products::orderBy('id', 'desc');
+        $product = \App\Models\Product\Products::query();
 
         if (!is_null(request()->category)) {
             $category = \App\Models\Category::where('slug', request()->category)->firstOrFail();
@@ -40,6 +40,28 @@ class HomeController extends Controller
         if (!is_null(request()->search)) {
             $product->where('name', 'LIKE', '%' . request()->search . '%');
         }
+
+        if (!is_null(request()->minimum_price)) {
+            $product->whereRaw('IF(price_sale > 0, price_sale, price) >= ?', request()->minimum_price);
+        }
+
+        if (!is_null(request()->maximum_price)) {
+            $product->whereRaw('IF(price_sale > 0, price_sale, price) <= ?', request()->maximum_price);
+        }
+
+        if (!is_null(request()->sorting_price)) {
+            $type = request()->sorting_price == 'asc' ? 'ASC' : 'DESC';
+            $product->orderByRaw('IF(price_sale > 0, price_sale, price) ' . $type);
+        } else {
+            $product->orderBy('id', 'desc');
+        }
+
+        if (!is_null(request()->categories) && is_array(request()->categories)) {
+            $product->whereHas('category', function ($subQuery) {
+                $subQuery->whereIn('slug', request()->categories);
+            });
+        }
+
 
         $products = $product->paginate(request()->per_page ?? 10);
 
