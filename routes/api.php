@@ -30,6 +30,11 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::get('/slider', [HomeController::class, 'getSlider']);
 Route::get('/category', [HomeController::class, 'getCategory']);
 
+Route::get('/product', [HomeController::class, 'getProduct']);
+Route::get('/product/{slug}', [HomeController::class, 'GetProductDetail']);
+Route::get('/product/{slug}/review', [HomeController::class, 'getProductReview']);
+Route::get('/seller/{username}', [HomeController::class, 'getSellerDetail']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [ProfileController::class, 'getProfile']);
     Route::patch('/update-profile', [ProfileController::class, 'updateProfile']);

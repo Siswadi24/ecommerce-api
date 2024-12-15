@@ -134,9 +134,7 @@ class Products extends Model
             'video_url' => $this->video_url,
             'seller' => $this->seller->getApiResponseAsSellerAttribute(),
             'image' => $this->images->map(function ($image) {
-                return [
-                    $image->image_url,
-                ];
+                return $image->image_url;
             }),
             'variations' => $this->variations->map(function ($variation) {
                 return $variation->getApiResponseAttribute();
@@ -150,7 +148,7 @@ class Products extends Model
                 'with_attachment' => $this->reviews()->whereNotNull('attachments')->count(),
                 'with_description' => $this->reviews()->whereNotNull('description')->count(),
             ],
-            'other_product' => $this->seller->product->where('id', '!=', $this->id)->random(6)->map(function ($product) {
+            'other_product' => $this->seller->products()->where('id', '!=', $this->id)->limit(6)->get()->map(function ($product) {
                 return $product->getApiResponseExcerptAttribute();
             }),
         ];

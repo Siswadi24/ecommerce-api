@@ -11,7 +11,7 @@ class Images extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id',
+        'products_id',
         'image',
     ];
 
