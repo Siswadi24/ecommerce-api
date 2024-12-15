@@ -25,6 +25,11 @@ class Category extends Model
         return $this->belongsTo(Category::class, 'parent_id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(Products::class);
+    }
+
     public function getApiResponseAttribute()
     {
         return [
@@ -42,6 +47,16 @@ class Category extends Model
             'slug' => $this->slug,
             'name' => $this->name,
             'description' => $this->description
+        ];
+    }
+
+    public function getApiResponseWithParentAttribute()
+    {
+        return [
+            'slug' => $this->slug,
+            'name' => $this->name,
+            'description' => $this->description,
+            'parent' => optional($this->parent)->api_response_child
         ];
     }
 }

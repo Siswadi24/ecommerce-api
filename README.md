@@ -33,6 +33,14 @@
     -   [Create Kredensial google]
     -   [Create Config Google]
     -   [Create API]
+
+    -   [Migration dan Model: Product, Images, Variation, dan Reviews]
+    -   [Dummy Files]
+    -   [Seeder Product]
+    -   [API Explore Product]
+    -   [API Detail Product]
+    -   [API Product Review]
+    -   [API Seller]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
