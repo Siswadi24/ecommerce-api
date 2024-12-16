@@ -41,6 +41,12 @@
     -   [API Detail Product]
     -   [API Product Review]
     -   [API Seller]
+
+    -   [Migration & Model: Cart, and CartItem]
+    -   [Add to Cart]
+    -   [List Cart]
+    -   [Update Cart Items]
+    -   [Remove Items]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
