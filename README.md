@@ -3,50 +3,56 @@
 ## Table of Contents
 
 -   [API Endpoints](#api-endpoints)
-    -   [Register User + Send OTP](#register-user--send-otp)
-    -   [Check OTP](#check-otp)
-    -   [Finish OTP](#finish-otp)
-    -   [Resend OTP](#resend-otp)
-    -   [Login](#login)
+    -   [X] [Register User + Send OTP](#register-user--send-otp)
+    -   [X] [Check OTP](#check-otp)
+    -   [X] [Finish OTP](#finish-otp)
+    -   [X] [Resend OTP](#resend-otp)
+    -   [X] [Login](#login)
 
-    -   [Request Reset Password + Send OTP]
-    -   [Request OTP]
-    -   [Check OTP]
-    -   [Reset Password]
+    -   [X] [Request Reset Password + Send OTP]
+    -   [X] [Request OTP]
+    -   [X] [Check OTP]
+    -   [X] [Reset Password]
 
-    -   [Get Profile]
-    -   [Update Profile]
+    -   [X] [Get Profile]
+    -   [X] [Update Profile]
 
-    -   [Migration & Model Slider]
-    -   [Seeder Slider]
-    -   [API Slider]
+    -   [X] [Migration & Model Slider]
+    -   [X] [Seeder Slider]
+    -   [X] [API Slider]
 
-    -   [Migration & Model Category]
-    -   [Seeder Category]
-    -   [API Category]
+    -   [X] [Migration & Model Category]
+    -   [X] [Seeder Category]
+    -   [X] [API Category]
 
-    -   [Migration and Model Province, City, Address]
-    -   [Import Database Dump for Provinces, Cities]
-    -   [API CRUD Address]
-    -   [API Set Address Utama]
+    -   [X] [Migration and Model Province, City, Address]
+    -   [X] [Import Database Dump for Provinces, Cities]
+    -   [X] [API CRUD Address]
+    -   [X] [API Set Address Utama]
 
-    -   [Create Kredensial google]
-    -   [Create Config Google]
-    -   [Create API]
+    -   [X] [Create Kredensial google]
+    -   [X] [Create Config Google]
+    -   [X] [Create API]
 
-    -   [Migration dan Model: Product, Images, Variation, dan Reviews]
-    -   [Dummy Files]
-    -   [Seeder Product]
-    -   [API Explore Product]
-    -   [API Detail Product]
-    -   [API Product Review]
-    -   [API Seller]
+    -   [X] [Migration dan Model: Product, Images, Variation, dan Reviews]
+    -   [X] [Dummy Files]
+    -   [X] [Seeder Product]
+    -   [X] [API Explore Product]
+    -   [X] [API Detail Product]
+    -   [X] [API Product Review]
+    -   [X] [API Seller]
 
-    -   [Migration & Model: Cart, and CartItem]
-    -   [Add to Cart]
-    -   [List Cart]
-    -   [Update Cart Items]
-    -   [Remove Items]
+    -   [X] [Migration & Model: Cart, and CartItem]
+    -   [X] [Add to Cart]
+    -   [X] [List Cart]
+    -   [X] [Update Cart Items]
+    -   [X] [Remove Items]
+
+    -   [] [Migration & Model: Voucher]
+    -   [] [Voucher Seedeer]
+    -   [] [Get List Voucher]
+    -   [] [Apply Voucher]
+    -   [] [Remove Voucher]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
