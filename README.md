@@ -59,9 +59,9 @@
     -   [x] [Get Shipping]
     -   [x] [Update Shipping]
 
-    -   [] [Overview Checkout]
-    -   [] [Overview Midtans]
-    -   [] [API Checkout]
+    -   [x] [Overview Checkout]
+    -   [x] [Overview Midtans]
+    -   [x] [API Checkout]
     -   [] [Callback Midtrans]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)

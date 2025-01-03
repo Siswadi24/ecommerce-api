@@ -6,6 +6,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/midtrans/callback', [App\Http\Controllers\MidtransController::class, 'callback']);
+
 // Route::get('/', function () {
 //     // Data yang dikirim
 //     $data = [
