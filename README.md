@@ -48,11 +48,16 @@
     -   [X] [Update Cart Items]
     -   [X] [Remove Items]
 
-    -   [] [Migration & Model: Voucher]
-    -   [] [Voucher Seedeer]
-    -   [] [Get List Voucher]
-    -   [] [Apply Voucher]
-    -   [] [Remove Voucher]
+    -   [x] [Migration & Model: Voucher]
+    -   [x] [Voucher Seedeer]
+    -   [x] [Get List Voucher]
+    -   [x] [Apply Voucher]
+    -   [x] [Remove Voucher]
+
+    -   [x] [Overview + Raja Ongkir Configuration]
+    -   [x] [Set Address]
+    -   [x] [Get Shipping]
+    -   [x] [Update Shipping]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 

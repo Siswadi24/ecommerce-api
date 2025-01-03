@@ -66,7 +66,7 @@ class Cart extends Model
 
         return [
             'uuid' => $this->uuid,
-            'address_id' => Optional($this->address)->api_response,
+            'address' => Optional($this->address)->api_response,
             'courier' => $this->courier,
             'courier_type' => $this->courier_type,
             'courier_estimation' => $this->courier_estimation,
