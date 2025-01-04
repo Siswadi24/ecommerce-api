@@ -62,7 +62,13 @@
     -   [x] [Overview Checkout]
     -   [x] [Overview Midtans]
     -   [x] [API Checkout]
-    -   [] [Callback Midtrans]
+    -   [x] [Callback Midtrans]
+
+    -   [x] [Install Package Wallet]
+    -   [x] [Add Dummy Deposito]
+    -   [x] [Add balance on profile response]
+    -   [x] [API Checkout Toggle Coin]
+    -   [] [Cut Balance on Checkout]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 

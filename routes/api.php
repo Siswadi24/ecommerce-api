@@ -46,7 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('province', [AddressController::class, 'getProvince']);
     Route::get('city', [AddressController::class, 'getCity']);
 
-    Route::prefix('card')->group(function () {
+    Route::prefix('cart')->group(function () {
         Route::get('/', [CartController::class, 'getCard']);
         Route::post('/', [CartController::class, 'addToCart']);
         Route::delete('/{uuid}', [CartController::class, 'removeItemFromCart']);
@@ -62,5 +62,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/shipping-fee', [CartController::class, 'updateShippingFee']);
 
     //Checkout
+    Route::post('/toggle-coin', [CartController::class, 'toggleCoin']);
     Route::post('/checkout', [CartController::class, 'checkout']);
 });

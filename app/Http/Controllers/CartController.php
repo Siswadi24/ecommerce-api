@@ -447,4 +447,22 @@ class CartController extends Controller
 
         return ResponseFormatter::success($order->api_response_detail);
     }
+
+    public function toggleCoin()
+    {
+        $cart = $this->getOrCreateCart();
+
+        $coin = 0;
+        //Melakukan Get Balance Coin Siapa?
+        if (request()->use == 1) {
+            $balance = auth()->user()->balance;
+            $maxCoin = $cart->items->sum('total') * 0.1;
+            $coin = $balance > $maxCoin ? $maxCoin : $balance;
+        }
+
+        $cart->pay_with_coin = $coin;
+        $cart->save();
+
+        return $this->getCard();
+    }
 }
