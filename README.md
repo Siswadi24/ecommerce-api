@@ -68,7 +68,9 @@
     -   [x] [Add Dummy Deposito]
     -   [x] [Add balance on profile response]
     -   [x] [API Checkout Toggle Coin]
-    -   [] [Cut Balance on Checkout]
+    -   [x] [Cut Balance on Checkout]
+
+    -   [] [Send Email to Seller]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 

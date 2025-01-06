@@ -17,23 +17,27 @@ class MidtransController extends Controller
         $transaction = $notification->transaction_status;
         $orderId = $notification->order_id;
 
-        $order = Order::where('uuid', $orderId)->first();
+        $order = Order::where('uuid', $orderId)->firstOrFail();
 
         if ($order) {
             if ($transaction == 'capture' || $transaction == 'settlement') {
-                $order->status()->create([
-                    'status' => 'paid',
-                    'description' => 'Pembayaran berhasil, menunggu proses pengiriman',
-                ]);
+                \Illuminate\Support\Facades\DB::transaction(function () use ($order) {
+                    $order->status()->create([
+                        'status' => 'paid',
+                        'description' => 'Pembayaran berhasil, menunggu proses pengiriman',
+                    ]);
 
-                $order->update([
-                    'is_paid' => true,
-                    'payment_expired_at' => null,
-                ]);
+                    $order->update([
+                        'is_paid' => true,
+                        'payment_expired_at' => null,
+                    ]);
 
-                foreach ($order->items as $item) {
-                    $item->product->decrement('stock', $item->qty);
-                }
+                    foreach ($order->items as $item) {
+                        $item->product->decrement('stock', $item->qty);
+                    }
+
+                    \Illuminate\Support\Facades\Mail::to($order->seller->email)->send(new \App\Mail\NewOrderToSeller($order));
+                });
             } elseif ($transaction == 'pending') {
                 $order->status()->create([
                     'status' => 'pending',
