@@ -70,7 +70,12 @@
     -   [x] [API Checkout Toggle Coin]
     -   [x] [Cut Balance on Checkout]
 
-    -   [] [Send Email to Seller]
+    -   [x] [Send Email to Seller]
+
+    -   [x] [List Order]
+    -   [] [Detail Product]
+    -   [] [Add Review + Add Coin Balance]
+    -   [] [Mark as Done]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 

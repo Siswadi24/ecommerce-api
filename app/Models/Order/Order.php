@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Order extends Model
 {
@@ -217,4 +218,16 @@ class Order extends Model
             $order->invoice_number = 'INV-' . $order->user_id . '-' . date('YmdHis');
         });
     }
+
+    // public function products(): HasManyThrough
+    // {
+    //     return $this->hasManyThrough(
+    //         \App\Models\Product\Products::class,
+    //         \App\Models\Order\OrderItem::class,
+    //         'order_id',
+    //         'id',
+    //         'id',
+    //         'product_id'
+    //     );
+    // }
 }
