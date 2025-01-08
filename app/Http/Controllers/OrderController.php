@@ -35,9 +35,9 @@ class OrderController extends Controller
                 $subQuery->whereIn('product_id', $productIds);
 
 
-            //---- Cara Cepat(Mengggunakan HashManyThrough) -----
-            // $query->orWhereHas('products', function ($subQuery) use ($productIds) {
-            //     $subQuery->whereIn('id', $productIds);
+                //---- Cara Cepat(Mengggunakan HashManyThrough) -----
+                // $query->orWhereHas('products', function ($subQuery) use ($productIds) {
+                //     $subQuery->whereIn('id', $productIds);
             });
         }
 
@@ -47,5 +47,35 @@ class OrderController extends Controller
             return $order->getApiResponseAttribute();
             // return $order->lastStatus->status;
         }));
+    }
+
+    public function show($uuid)
+    {
+        $order = auth()->user()->orders()->with([
+            'seller',
+            'address',
+            'items',
+            'lastStatus',
+        ])->where('uuid', $uuid)->firstOrFail();
+
+        return ResponseFormatter::success($order->api_response_detail);
+    }
+
+    public function markDone($uuid)
+    {
+        $order = auth()->user()->orders()->with([
+            'lastStatus'
+        ])->where('uuid', $uuid)->firstOrFail();
+
+        if ($order->lastStatus->status != 'on_delivery') {
+            return ResponseFormatter::error(400, null, [
+                'Status order belum dikirim!'
+            ]);
+        }
+
+        $order->markAsDone();
+        $order->refresh();
+
+        return ResponseFormatter::success($order->api_response_detail);
     }
 }

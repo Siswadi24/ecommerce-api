@@ -73,9 +73,9 @@
     -   [x] [Send Email to Seller]
 
     -   [x] [List Order]
-    -   [] [Detail Product]
-    -   [] [Add Review + Add Coin Balance]
-    -   [] [Mark as Done]
+    -   [x] [Detail Product]
+    -   [x] [Add Review + Add Coin Balance]
+    -   [x] [Mark as Done]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
