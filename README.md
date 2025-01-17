@@ -76,6 +76,7 @@
     -   [x] [Detail Product]
     -   [x] [Add Review + Add Coin Balance]
     -   [x] [Mark as Done]
+    -   [x] [Add Review & Add Koin Balance]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
