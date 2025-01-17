@@ -77,6 +77,12 @@
     -   [x] [Add Review + Add Coin Balance]
     -   [x] [Mark as Done]
     -   [x] [Add Review & Add Koin Balance]
+
+## API SELLER
+    -   [x] [List Product]
+    -   [x] [Add Product]
+    -   [] [Edit Product]
+    -   [] [Delete Product]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
