@@ -82,7 +82,7 @@
     -   [x] [List Product]
     -   [x] [Add Product]
     -   [x] [Edit Product]
-    -   [] [Delete Product]
+    -   [x] [Delete Product]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
