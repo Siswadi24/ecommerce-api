@@ -65,27 +65,68 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $uuid)
     {
-        //
+        $rules = $this->getValidation();
+        $rules['old_images'] = 'array';
+        $rules['old_images.*'] = 'url';
+
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return ResponseFormatter::error(400, $validator->errors());
+        }
+
+        $payload = $this->prepareData($validator->validated());
+        $product = \Illuminate\Support\Facades\DB::transaction(function () use ($payload, $uuid) {
+            $product = auth()->user()->products()->where('uuid', $uuid)->firstOrFail();
+            $product->update($payload);
+
+            $product->variations()->delete();
+            foreach ($payload['variations'] as $variation) {
+                $product->variations()->create($variation);
+            }
+
+            foreach ($product->images as $image) {
+                if (!in_array($image->image, $payload['old_images'])) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->delete($image->image);
+                    $image->delete();
+                }
+            }
+            foreach ($payload['images'] as $image) {
+                $product->images()->create($image);
+            }
+
+            return $product;
+        });
+
+        $product->refresh();
+
+        return ResponseFormatter::success($product->api_response_seller);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $uuid)
     {
-        //
+        $product = auth()->user()->products()->with('images')->where('uuid', $uuid)->firstOrFail();
+
+        //Hapus Video
+        if ($product->video) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($product->video);
+        }
+
+        //Hapus Gambar
+        foreach ($product->images as $image) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($image->image);
+        }
+        $product->delete();
+
+        return ResponseFormatter::success([
+            'is_deleted' => true
+        ]);
     }
 
     private function getValidation()
@@ -133,15 +174,15 @@ class ProductController extends Controller
 
         $payload['images'] = $images;
 
-        // if (isset($payload['old_images'])) {
-        //     $oldImages = [];
-        //     foreach ($payload['old_images'] as $oldImage) {
-        //         $oldImages[] = str_replace(config('app.url') . '/storage/', '', $oldImage);
-        //     }
-        //     $payload['old_images'] = $oldImages;
-        // } else {
-        //     $payload['old_images'] = [];
-        // }
+        if (isset($payload['old_images'])) {
+            $oldImages = [];
+            foreach ($payload['old_images'] as $oldImage) {
+                $oldImages[] = str_replace(config('app.url') . '/storage/', '', $oldImage);
+            }
+            $payload['old_images'] = $oldImages;
+        } else {
+            $payload['old_images'] = [];
+        }
 
         return $payload;
     }

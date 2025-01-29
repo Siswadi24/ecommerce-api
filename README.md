@@ -81,7 +81,7 @@
 ## API SELLER
     -   [x] [List Product]
     -   [x] [Add Product]
-    -   [] [Edit Product]
+    -   [x] [Edit Product]
     -   [] [Delete Product]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
