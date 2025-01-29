@@ -83,6 +83,11 @@
     -   [x] [Add Product]
     -   [x] [Edit Product]
     -   [x] [Delete Product]
+
+    -   [x] [List Voucher]
+    -   [x] [Add Voucher]
+    -   [x] [Edit Voucher]
+    -   [x] [Delete Voucher]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 
