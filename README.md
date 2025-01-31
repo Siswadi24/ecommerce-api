@@ -88,6 +88,14 @@
     -   [x] [Add Voucher]
     -   [x] [Edit Voucher]
     -   [x] [Delete Voucher]
+
+    -   [x] [List Order (Only Paid)]
+    -   [x] [Detail Order]
+    -   [x] [Add Status (paid -> on_processing, on_processing -> on_delivery, add on_delivery note)]
+
+    -   [x] [List Transaksi Order]
+    -   [x] [Get List Bank]
+    -   [x] [Withdraw]
 -   [Error Handling](#error-handling)
 -   [Sample Requests](#sample-requests)
 

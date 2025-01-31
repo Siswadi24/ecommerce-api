@@ -71,6 +71,7 @@ class User extends Authenticatable implements Wallet
             'email' => $this->email,
             'photo_url' => $this->photo_url,
             'username' => $this->username,
+            'phone' => $this->phone,
             'store_name' => $this->store_name,
             'gender' => $this->gender,
             'birth_date' => $this->birth_date,
@@ -90,6 +91,17 @@ class User extends Authenticatable implements Wallet
             'rating_count' => \App\Models\Product\Reviews::whereIn('products_id', $productIds)->count(),
             'join_date' => $this->created_at->diffForHumans(),
             'send_from' => optional($this->addresses()->where('is_default', 'true')->first())->getApiResponseAttribute()
+        ];
+    }
+
+    public function getApiResponseAsBuyerAttribute()
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+            'photo_url' => $this->photo_url,
+            'username' => $this->username,
+            'phone' => $this->phone,
         ];
     }
 
@@ -115,6 +127,11 @@ class User extends Authenticatable implements Wallet
     public function orders()
     {
         return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function orderAsSeller()
+    {
+        return $this->hasMany(Order::class, 'seller_id');
     }
 
     public function vouchers()

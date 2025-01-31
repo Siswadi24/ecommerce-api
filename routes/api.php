@@ -7,8 +7,10 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\OrderController as SellerOrderController;
 use App\Http\Controllers\Seller\ProductController;
 use App\Http\Controllers\Seller\VoucherController;
+use App\Http\Controllers\Seller\WalletController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -83,5 +85,14 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('voucher', VoucherController::class)->except([
             'show'
         ]);
+
+        Route::apiResource('order', SellerOrderController::class)->only([
+            'index', 'show'
+        ]);
+        Route::post('order/{uuid}/status', [SellerOrderController::class, 'addStatus']);
+
+        Route::get('wallet-transaction', [WalletController::class, 'index']);
+        Route::get('list-bank', [WalletController::class, 'getListBank']);
+        Route::post('withdraw', [WalletController::class, 'createWithdraw']);
     });
 });
