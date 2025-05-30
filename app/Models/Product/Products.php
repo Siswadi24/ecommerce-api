@@ -51,7 +51,7 @@ class Products extends Model
 
     public function variations()
     {
-        return $this->hasMany(variations::class);
+        return $this->hasMany(Variations::class);
     }
 
     public function seller()
